@@ -1,10 +1,8 @@
-function App() {
-  return (
-    <div className='App'>
-      <h1>Monika Juskowiak jest najpiękniejszą kobietą na świecie</h1>
-      <h2>UWIELBIAM JĄ</h2>
-    </div>
-  );
-}
+import React from 'react';
+import RappersCarousel from './landingPage/RappersCarousel';
+
+const App: React.FC = () => {
+  return <RappersCarousel />;
+};
 
 export default App;
