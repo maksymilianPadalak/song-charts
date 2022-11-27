@@ -1,16 +1,8 @@
 import React from 'react';
-import RappersCarousel from './landingPage/RappersCarousel';
-import MainChart from './charts/components/MainChart';
+import LandingPage from './landingPage/components/LandingPage';
 
 const App: React.FC = () => {
-  return (
-    <div>
-      <RappersCarousel />
-      <div style={{ height: '500px' }}>
-        <MainChart />
-      </div>
-    </div>
-  );
+  return <LandingPage />;
 };
 
 export default App;

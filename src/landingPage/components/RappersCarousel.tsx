@@ -1,9 +1,13 @@
 import Carousel from 'react-bootstrap/Carousel';
 import React from 'react';
 
-const RappersCarousel: React.FC = () => {
+interface Props {
+  className?: string;
+}
+
+const RappersCarousel: React.FC<Props> = ({ className }) => {
   return (
-    <Carousel fade interval={1000}>
+    <Carousel fade interval={1000} className={className}>
       <Carousel.Item>
         <div className='d-block w-100 carousel-background' />
 
