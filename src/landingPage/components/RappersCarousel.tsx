@@ -1,37 +1,30 @@
 import Carousel from 'react-bootstrap/Carousel';
 import React from 'react';
+import CarouselItemBody from './CarouselItemBody';
 
 interface Props {
   className?: string;
 }
 
+export interface CarouselItemInterface {
+  name: string;
+  quote: string;
+}
+
+const carouselItems: CarouselItemInterface[] = [
+  { name: 'Kocham Monię 1', quote: 'Monia jest super' },
+  { name: 'Kocham Monię 2', quote: 'Monia jest super' },
+  { name: 'Kocham Monię 3', quote: 'Monia jest super' },
+];
+
 const RappersCarousel: React.FC<Props> = ({ className }) => {
   return (
-    <Carousel fade interval={1000} className={className}>
-      <Carousel.Item>
-        <div className='d-block w-100 carousel-background' />
-
-        <Carousel.Caption>
-          <h3>Kocham Monię 1</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <div className='d-block w-100 carousel-background' />
-
-        <Carousel.Caption>
-          <h3>Kocham Monię 2</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <div className='d-block w-100 carousel-background' />
-
-        <Carousel.Caption>
-          <h3>Kocham Monię 3</h3>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
+    <Carousel fade interval={null} className={className}>
+      {carouselItems.map((item) => (
+        <Carousel.Item className='carousel-background' key={item.name}>
+          <CarouselItemBody carouselItem={item} key={item.name} />
+        </Carousel.Item>
+      ))}
     </Carousel>
   );
 };
