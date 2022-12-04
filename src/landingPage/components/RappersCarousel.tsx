@@ -8,18 +8,31 @@ interface Props {
 
 export interface CarouselItemInterface {
   name: string;
-  quote: string;
+  word: string;
+  rapperCharacterUrl: string;
 }
 
 const carouselItems: CarouselItemInterface[] = [
-  { name: 'Kocham Monię 1', quote: 'Monia jest super' },
-  { name: 'Kocham Monię 2', quote: 'Monia jest super' },
-  { name: 'Kocham Monię 3', quote: 'Monia jest super' },
+  {
+    name: 'Snoop Dogg',
+    word: 'Weed',
+    rapperCharacterUrl: '../../../assets/characters/SnoopDogg.png',
+  },
+  {
+    name: 'Kendrick Lamar',
+    word: 'Compton',
+    rapperCharacterUrl: '../../../assets/characters/KendrickLamar.png',
+  },
+  {
+    name: 'Pezet',
+    word: 'Pezet',
+    rapperCharacterUrl: '../../../assets/characters/Pezet.png',
+  },
 ];
 
 const RappersCarousel: React.FC<Props> = ({ className }) => {
   return (
-    <Carousel fade interval={null} className={className}>
+    <Carousel fade interval={3000} className={className}>
       {carouselItems.map((item) => (
         <Carousel.Item className='carousel-background' key={item.name}>
           <CarouselItemBody carouselItem={item} key={item.name} />
