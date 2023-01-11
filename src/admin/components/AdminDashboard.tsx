@@ -3,7 +3,7 @@ import React from 'react';
 const AdminDashboard: React.FC = () => {
   return (
     <div>
-      <h1>Dupa</h1>
+      <h1>Dashboard</h1>
     </div>
   );
 };
