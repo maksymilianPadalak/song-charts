@@ -1,8 +1,15 @@
 @import 'node_modules/bootstrap/scss/bootstrap';
 
-html {
-  font-family: Inter sans-serif;
-  text-align: center;
+html, body {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
 }
 
 .carousel-background {
