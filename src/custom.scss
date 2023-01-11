@@ -14,9 +14,13 @@ html, body {
 
 .carousel-background {
   height: 200px;
-  background-color: #900d09;
-  color: white;
 }
+
+.burgundy {
+  color: white;
+  background-color: #900d09;
+}
+
 
 p,
 h1,
@@ -29,4 +33,8 @@ h5 {
 
 .clickable {
   cursor: pointer;
+}
+
+.log-in-as-admin {
+
 }

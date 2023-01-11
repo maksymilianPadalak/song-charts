@@ -34,7 +34,7 @@ const RappersCarousel: React.FC<Props> = ({ className }) => {
   return (
     <Carousel fade interval={3000} className={className}>
       {carouselItems.map((item) => (
-        <Carousel.Item className='carousel-background' key={item.name}>
+        <Carousel.Item className='carousel-background burgundy' key={item.name}>
           <CarouselItemBody carouselItem={item} key={item.name} />
         </Carousel.Item>
       ))}
