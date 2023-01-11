@@ -7,6 +7,7 @@ const Login: React.FC = () => {
   const handleLogin = async () => {
     await onLogin();
   };
+
   return (
     <div>
       <h1>Login</h1>
