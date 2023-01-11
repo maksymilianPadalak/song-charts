@@ -18,6 +18,7 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
   const [token, setToken] = React.useState<string>('');
 
   const handleLogin = async () => {
+    //TODO handle login logic with http request here
     const token = 'asdasd';
     setToken(token);
   };
