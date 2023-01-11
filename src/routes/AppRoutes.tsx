@@ -21,7 +21,7 @@ const AppRoutes: React.FC = () => {
             </>
           ) : (
             <>
-              <Route path={'login'} element={<Login className='min-vh-100' />} />
+              <Route path={'login'} element={<Login className='min-vh-100 m-4' />} />
               <Route path='' element={<Navigate to={'login'} />} />
               <Route path='*' element={<Navigate to={'login'} />} />
             </>
