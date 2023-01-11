@@ -19,7 +19,7 @@ const LandingPage: React.FC<Props> = ({ className }) => {
         </div>
       </div>
       <div>
-        <LogInAsAdmin className={'burgundy--100'} />
+        <LogInAsAdmin />
       </div>
     </div>
   );
