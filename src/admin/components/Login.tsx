@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import Form from 'react-bootstrap/Form';
+import { Link } from 'react-router-dom';
 
 interface Props {
   className?: string;
@@ -22,6 +23,9 @@ const Login: React.FC<Props> = ({ className }) => {
         <button className={'btn btn-primary'} onClick={handleLogin}>
           Login
         </button>
+        <Link to={'/'} className={'btn btn-warning mt-4'}>
+          Go back to dashboard
+        </Link>
       </div>
     </div>
   );
