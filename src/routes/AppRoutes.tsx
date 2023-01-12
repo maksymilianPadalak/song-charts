@@ -4,6 +4,7 @@ import AdminDashboard from '../admin/components/AdminDashboard';
 import Login from '../admin/components/Login';
 import React from 'react';
 import { useAuth } from '../hooks/useAuth';
+import SongDetails from '../admin/components/SongDetails';
 
 const AppRoutes: React.FC = () => {
   const { token } = useAuth();
@@ -11,11 +12,14 @@ const AppRoutes: React.FC = () => {
   return (
     <>
       <Routes>
-        <Route path={'/'} element={<LandingPage className='min-vh-100' />} />
-        <Route path={'/admin'}>
+        <Route path={''} element={<LandingPage className='min-vh-100' />} />
+        <Route path={'admin'}>
           {token ? (
             <>
-              <Route path={'dashboard'} element={<AdminDashboard className={'mt-2'} />} />
+              <Route path={'dashboard'}>
+                <Route path={''} element={<AdminDashboard className={'mt-2'} />} />
+                <Route path={'song'} element={<SongDetails />} />
+              </Route>
               <Route path='' element={<Navigate to={'dashboard'} />} />
               <Route path='*' element={<Navigate to={'dashboard'} />} />
             </>
@@ -27,6 +31,7 @@ const AppRoutes: React.FC = () => {
             </>
           )}
         </Route>
+        <Route path='*' element={<Navigate to={'/'} />} />
       </Routes>
     </>
   );
