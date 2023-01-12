@@ -15,7 +15,7 @@ const AppRoutes: React.FC = () => {
         <Route path={'/admin'}>
           {token ? (
             <>
-              <Route path={'dashboard'} element={<AdminDashboard />} />
+              <Route path={'dashboard'} element={<AdminDashboard className={'mt-2'} />} />
               <Route path='' element={<Navigate to={'dashboard'} />} />
               <Route path='*' element={<Navigate to={'dashboard'} />} />
             </>
