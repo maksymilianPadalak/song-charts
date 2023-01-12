@@ -15,7 +15,7 @@ const Login: React.FC<Props> = ({ className }) => {
   };
 
   return (
-    <div className={`${className} d-flex justify-content-center align-items-center x-3`}>
+    <div className={`${className} d-flex justify-content-center align-items-center`}>
       <div className={'d-flex flex-column align-items-center'}>
         <h1 className={'mb-3'}>Welcome Mr Admin</h1>
         <Form.Control size='lg' type='text' placeholder='Login' className={'mb-2'} />
