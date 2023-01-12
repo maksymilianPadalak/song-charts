@@ -22,7 +22,7 @@ const AdminDashboard: React.FC<Props> = ({ className }) => {
       </div>
       <div className={'d-flex flex-column align-items-center'}>
         <div className={'text-center w-75'}>
-          <h1>Dashboard</h1>
+          <h3>Search artist or song</h3>
           <div className={'d-flex flex-column flex-sm-row mt-3 mb-3'}>
             <Form.Control
               type='text'
@@ -32,9 +32,7 @@ const AdminDashboard: React.FC<Props> = ({ className }) => {
             <Form.Control type='text' placeholder='Album' className={'ms-0 ms-sm-2'} />
           </div>
 
-          <button className={'btn btn-success mb-5 col-12 col-md-6'} onClick={handleLogout}>
-            Search
-          </button>
+          <button className={'btn btn-success mb-5 col-12 col-md-6'}>Search</button>
         </div>
       </div>
     </div>
