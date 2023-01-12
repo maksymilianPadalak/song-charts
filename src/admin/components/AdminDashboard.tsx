@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import SearchForm from './SearchForm';
+import SongsList from './SongsList';
 
 interface Props {
   className?: string;
@@ -21,6 +22,7 @@ const AdminDashboard: React.FC<Props> = ({ className }) => {
         </button>
       </div>
       <SearchForm />
+      <SongsList />
     </div>
   );
 };
