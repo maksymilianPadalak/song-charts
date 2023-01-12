@@ -20,6 +20,7 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.6.0",
     "react-dom": "^18.2.0",
+    "react-responsive-pagination": "^1.10.0",
     "react-router-dom": "^6.6.2",
     "sass": "^1.56.1"
   },
