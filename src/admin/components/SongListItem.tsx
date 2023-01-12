@@ -8,7 +8,7 @@ const x = [1, 2, 3];
 
 const SongsListItem: React.FC<Props> = ({ className }) => {
   return (
-    <div className={className}>
+    <div className={`${className} song-list-item`}>
       <div className={'d-flex flex-column flex-sm-row justify-content-around'}>
         {x.map(() => {
           return (
