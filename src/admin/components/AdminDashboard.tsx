@@ -33,7 +33,7 @@ const AdminDashboard: React.FC<Props> = ({ className }) => {
           Logout
         </button>
       </div>
-      <SearchForm />
+      <SearchForm isDisabled={isSongsLoading} />
       {isSongsLoading ? <Loader /> : isError ? <Error /> : <SongsList songs={songs} />}
     </div>
   );
