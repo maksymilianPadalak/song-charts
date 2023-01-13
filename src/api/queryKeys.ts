@@ -1,3 +1,4 @@
 export enum queryKeys {
-  'songs' = 'songs',
+  login = 'login',
+  songs = 'songs',
 }
