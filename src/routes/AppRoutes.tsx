@@ -7,14 +7,14 @@ import { useAuth } from '../hooks/useAuth';
 import SongDetails from '../admin/components/SongDetails';
 
 const AppRoutes: React.FC = () => {
-  const { token } = useAuth();
+  const { isLoggedIn } = useAuth();
 
   return (
     <>
       <Routes>
         <Route path={''} element={<LandingPage className='min-vh-100' />} />
         <Route path={'admin'}>
-          {token ? (
+          {isLoggedIn ? (
             <>
               <Route path={'dashboard'}>
                 <Route path={''} element={<AdminDashboard />} />

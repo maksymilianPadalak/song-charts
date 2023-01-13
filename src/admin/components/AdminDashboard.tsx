@@ -3,16 +3,24 @@ import { useAuth } from '../../hooks/useAuth';
 import SearchForm from './SearchForm';
 import SongsList from './SongsList';
 import { useQuery } from 'react-query';
-import { fetchPosts } from '../../api/admin/adminApiFunctions';
 import { queryKeys } from '../../api/queryKeys';
+import { fetchSongs } from '../../api/admin/adminApiFunctions';
+import Loader from '../../shared/components/Loader';
+import Error from '../../shared/components/Error';
 
 interface Props {
   className?: string;
 }
 
 const AdminDashboard: React.FC<Props> = ({ className }) => {
-  const { onLogout } = useAuth();
-  const { data, isLoading } = useQuery(queryKeys.songs, fetchPosts);
+  const { onLogout, jwtHeader } = useAuth();
+  const {
+    data,
+    isLoading: isSongsLoading,
+    isError,
+  } = useQuery(queryKeys.songs, () => fetchSongs(jwtHeader));
+
+  const songs = data ?? [];
 
   const handleLogout = async () => {
     await onLogout();
@@ -26,7 +34,7 @@ const AdminDashboard: React.FC<Props> = ({ className }) => {
         </button>
       </div>
       <SearchForm />
-      <SongsList />
+      {isSongsLoading ? <Loader /> : isError ? <Error /> : <SongsList songs={songs} />}
     </div>
   );
 };
