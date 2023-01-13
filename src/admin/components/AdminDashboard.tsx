@@ -18,13 +18,8 @@ const AdminDashboard: React.FC<Props> = ({ className }) => {
     await onLogout();
   };
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <div className={className}>
-      <h1>{data.toString()}</h1>
       <div className={'d-flex justify-content-end'}>
         <button className={'btn btn-danger m-2'} onClick={handleLogout}>
           Logout

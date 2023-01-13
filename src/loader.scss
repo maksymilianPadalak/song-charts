@@ -1,0 +1,28 @@
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  width: 64px;
+  height: 64px;
+  border: 8px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: loader-animation 0.8s alternate infinite;
+}
+
+@keyframes loader-animation {
+  0% {
+    transform: rotate(0deg);
+    border-color: transparent;
+    border-radius: 50%;
+  }
+  100% {
+    transform: rotate(360deg) scale(1.5);
+    border-color: #900d09 #000 #900d09 #000;
+    border-radius: 50%;
+  }
+}
