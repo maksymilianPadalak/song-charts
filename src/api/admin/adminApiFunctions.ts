@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Credentials, JwtHeader, Song } from '../../interfaces';
+import { Credentials, JwtHeader, Song, SongDetails } from '../../interfaces';
 
 const adminUrlPrefix = '/api/admin';
 
@@ -12,6 +12,13 @@ export async function logIn(credentials: Credentials) {
 
 export async function fetchSongs(jwtHeader: JwtHeader | undefined) {
   const { data } = await axios.get<Song[]>(adminUrlPrefix + '/songs', {
+    headers: { ...jwtHeader },
+  });
+  return data;
+}
+
+export async function fetchSong(jwtHeader: JwtHeader | undefined, id: string) {
+  const { data } = await axios.get<SongDetails>(adminUrlPrefix + `/songs/${id}`, {
     headers: { ...jwtHeader },
   });
   return data;

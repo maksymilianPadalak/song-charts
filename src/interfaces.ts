@@ -8,6 +8,12 @@ export interface Song {
   id: string;
   songTitle: string;
 }
+export interface SongDetails {
+  albumTitle: string;
+  author: string;
+  cleanedLyrics: string;
+  songTitle: string;
+}
 
 export interface Credentials {
   username: string;
