@@ -1,18 +1,46 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
-import { useQuery } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 import { queryKeys } from '../../api/queryKeys';
-import { fetchSong } from '../../api/admin/adminApiFunctions';
+import { cleanLyrics, fetchSong } from '../../api/admin/adminApiFunctions';
 import { useAuth } from '../../hooks/useAuth';
 import Loader from '../../shared/components/Loader';
+import { useForm } from 'react-hook-form';
+
+interface FormValues {
+  cleanedLyrics: string;
+}
 
 const SongDetails: React.FC = () => {
   const { id } = useParams() as { id: string };
+  const navigate = useNavigate();
   const { jwtHeader } = useAuth();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>();
+
   const { data, isLoading } = useQuery(queryKeys.song, () => fetchSong(jwtHeader, id), {
     cacheTime: 0,
   });
+
+  const {
+    mutate,
+    isLoading: isSubmitting,
+    isError: isErrorSubmitting,
+    isSuccess: isSuccessSubmitting,
+  } = useMutation(cleanLyrics, {
+    onSuccess: () => {
+      navigate('admin/dashboard');
+    },
+  });
+
+  const onSubmit = ({ cleanedLyrics }: FormValues) => {
+    mutate({ cleanedLyrics, jwtHeader, id });
+  };
 
   if (isLoading) return <Loader size={'lg'} fullScreen />;
 
@@ -32,16 +60,36 @@ const SongDetails: React.FC = () => {
           <h3>{data?.albumTitle}</h3>
         </div>
       </div>
-      <div className={'m-2 m-md-5'}>
-        <Form.Control as='textarea' className={'text-area'} value={data?.cleanedLyrics} />
-      </div>
-      <button className={'btn btn-dark col-11 col-sm-6 align-self-center'}>Submit changes</button>
-      <Link
-        className={'btn btn-light col-11 col-sm-6 align-self-center mt-3'}
-        to={'admin/dashboard'}
-      >
-        Cancel
-      </Link>
+      {isSubmitting ? (
+        <Loader />
+      ) : (
+        <>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className={'m-2 mt-md-4 mb-md-4'}>
+              <Form.Control
+                as='textarea'
+                className={'text-area'}
+                {...register('cleanedLyrics', { required: true })}
+              >
+                {data?.cleanedLyrics}
+              </Form.Control>
+            </div>
+            {isErrorSubmitting && <h3 className={'text-danger mb-4'}>Unable to clean lyrics</h3>}
+            {isSuccessSubmitting && <h3 className={'text-success mb-4'}>Lyrics updated</h3>}
+
+            <button className={'btn btn-dark col-11 col-sm-6 align-self-center'}>
+              Submit changes
+            </button>
+          </form>
+
+          <Link
+            className={'btn btn-light col-11 col-sm-6 align-self-center mt-3'}
+            to={'admin/dashboard'}
+          >
+            Cancel
+          </Link>
+        </>
+      )}
     </div>
   );
 };
