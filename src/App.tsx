@@ -1,6 +1,6 @@
 import React from 'react';
 import AuthProvider from './providers/AuthProvider';
-import AppRoutes from './routes/AppRoutes';
+import AppRoutes from './components/routes/AppRoutes';
 
 const App: React.FC = () => {
   return (

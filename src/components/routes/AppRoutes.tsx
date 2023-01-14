@@ -1,10 +1,10 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import LandingPage from '../landingPage/components/LandingPage';
-import AdminDashboard from '../admin/components/AdminDashboard';
-import Login from '../admin/components/Login';
+import LandingPage from '../user/LandingPage';
+import AdminDashboard from '../admin/AdminDashboard';
+import Login from '../admin/Login';
 import React from 'react';
-import { useAuth } from '../hooks/useAuth';
-import SongDetails from '../admin/components/SongDetails';
+import { useAuth } from '../../hooks/useAuth';
+import SongDetails from '../admin/SongDetails';
 
 const AppRoutes: React.FC = () => {
   const { isLoggedIn } = useAuth();

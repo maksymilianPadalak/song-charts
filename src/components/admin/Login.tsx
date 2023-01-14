@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import { useMutation } from 'react-query';
 import { logIn } from '../../api/admin/adminApiFunctions';
-import Loader from '../../shared/components/Loader';
+import Loader from '../shared/Loader';
 import { useForm } from 'react-hook-form';
 
 interface Props {

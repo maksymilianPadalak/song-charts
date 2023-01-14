@@ -5,7 +5,7 @@ import { useMutation, useQuery } from 'react-query';
 import { queryKeys } from '../../api/queryKeys';
 import { cleanLyrics, fetchSong } from '../../api/admin/adminApiFunctions';
 import { useAuth } from '../../hooks/useAuth';
-import Loader from '../../shared/components/Loader';
+import Loader from '../shared/Loader';
 import { useForm } from 'react-hook-form';
 
 interface FormValues {

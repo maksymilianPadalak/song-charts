@@ -5,8 +5,8 @@ import SongsList from './SongsList';
 import { useQuery } from 'react-query';
 import { queryKeys } from '../../api/queryKeys';
 import { fetchSongs } from '../../api/admin/adminApiFunctions';
-import Loader from '../../shared/components/Loader';
-import Error from '../../shared/components/Error';
+import Loader from '../shared/Loader';
+import Error from '../shared/Error';
 import { SearchSongsFormValues } from '../../interfaces';
 import { FetchSongsArguments } from '../../api/useQueryInterfaces';
 
