@@ -3,12 +3,12 @@ import { useAuth } from '../../hooks/useAuth';
 import SongsSearchForm from './SongsSearchForm';
 import SongsList from './SongsList';
 import { useQuery } from 'react-query';
-import { queryKeys } from '../../api/queryKeys';
-import { fetchSongs } from '../../api/admin/adminApiFunctions';
+import { reactQueryKeys } from '../../api/admin/reactQueryKeys';
+import { fetchSongs } from '../../api/admin/apiFunctions';
 import Loader from '../shared/Loader';
 import Error from '../shared/Error';
 import { SearchSongsFormValues } from '../../interfaces';
-import { FetchSongsArguments } from '../../api/useQueryInterfaces';
+import { FetchSongsArguments } from '../../api/user/reactQueryInterfaces';
 
 interface Props {
   className?: string;
@@ -23,9 +23,8 @@ const AdminDashboard: React.FC<Props> = ({ className }) => {
   const {
     data,
     isLoading: isSongsLoading,
-    isRefetching: isSongsRefetching,
     isError,
-  } = useQuery([queryKeys.songs, fetchSongsArguments], () => fetchSongs(fetchSongsArguments), {
+  } = useQuery([reactQueryKeys.songs, fetchSongsArguments], () => fetchSongs(fetchSongsArguments), {
     cacheTime: 0,
   });
 
@@ -51,13 +50,7 @@ const AdminDashboard: React.FC<Props> = ({ className }) => {
         </button>
       </div>
       <SongsSearchForm isDisabled={isSongsLoading} submitSearchForm={submitSearchForm} />
-      {isSongsLoading || isSongsRefetching ? (
-        <Loader />
-      ) : isError ? (
-        <Error />
-      ) : (
-        <SongsList songs={songs} />
-      )}
+      {isSongsLoading ? <Loader /> : isError ? <Error /> : <SongsList songs={songs} />}
     </div>
   );
 };
