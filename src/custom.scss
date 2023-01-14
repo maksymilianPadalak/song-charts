@@ -41,10 +41,16 @@ h5 {
     color: #900d09;
   }
 }
+
 .song-list-item {
   cursor: pointer;
+
   &:hover {
     transform: scale(1.02);
   }
+}
+
+.text-area {
+  min-height: 500px !important;
 }
 

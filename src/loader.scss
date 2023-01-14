@@ -4,6 +4,11 @@
   align-items: center;
 }
 
+.loader-container-full-screen {
+  @extend .loader-container;
+  height: 100vh;
+}
+
 .spinner {
   display: flex;
   align-items: center;
