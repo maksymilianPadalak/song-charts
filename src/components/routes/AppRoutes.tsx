@@ -5,6 +5,7 @@ import Login from '../admin/Login';
 import React from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import SongDetails from '../admin/SongDetails';
+import AlbumStats from '../user/AlbumStats';
 
 const AppRoutes: React.FC = () => {
   const { isLoggedIn } = useAuth();
@@ -13,6 +14,7 @@ const AppRoutes: React.FC = () => {
     <>
       <Routes>
         <Route path={''} element={<LandingPage className='min-vh-100' />} />
+        <Route path={'/album/:title'} element={<AlbumStats />} />
         <Route path={'admin'}>
           {isLoggedIn ? (
             <>
