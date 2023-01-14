@@ -23,7 +23,7 @@ const AlbumsList: React.FC<Props> = ({ albums, className }) => {
   return (
     <div className={className}>
       {currentAlbums.map((album) => (
-        <div className={'m-4'}>
+        <div key={album} className={'m-4'}>
           <h5>{album}</h5>
           <hr />
         </div>

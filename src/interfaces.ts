@@ -24,3 +24,7 @@ export interface SearchSongsFormValues {
   author: string | undefined;
   albumTitle: string | undefined;
 }
+
+export interface SearchAlbumsFormValues {
+  author: string | undefined;
+}
