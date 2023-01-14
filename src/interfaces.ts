@@ -28,3 +28,9 @@ export interface SearchSongsFormValues {
 export interface SearchAlbumsFormValues {
   author: string | undefined;
 }
+
+export interface Freq {
+  freq: Record<string, number>;
+}
+
+export type AlbumStats = Record<string, Freq> | { includedSongs: string[] };
