@@ -5,3 +5,9 @@ export interface CleanLyricsArguments {
   id: string;
   cleanedLyrics: string;
 }
+
+export interface FetchSongsArguments {
+  jwtHeader: JwtHeader | undefined;
+  author?: string;
+  albumTitle?: string;
+}

@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
-import SearchForm from './SearchForm';
+import SongsSearchForm from './SongsSearchForm';
 import SongsList from './SongsList';
 import { useQuery } from 'react-query';
 import { queryKeys } from '../../api/queryKeys';
 import { fetchSongs } from '../../api/admin/adminApiFunctions';
 import Loader from '../../shared/components/Loader';
 import Error from '../../shared/components/Error';
+import { SearchSongsFormValues } from '../../interfaces';
+import { FetchSongsArguments } from '../../api/useQueryInterfaces';
 
 interface Props {
   className?: string;
@@ -14,16 +16,30 @@ interface Props {
 
 const AdminDashboard: React.FC<Props> = ({ className }) => {
   const { onLogout, jwtHeader } = useAuth();
+  const [fetchSongsArguments, setFetchSongsArguments] = useState<FetchSongsArguments>({
+    jwtHeader,
+  });
   const {
     data,
     isLoading: isSongsLoading,
+    isRefetching: isSongsRefetching,
     isError,
-  } = useQuery(queryKeys.songs, () => fetchSongs(jwtHeader));
+  } = useQuery([queryKeys.songs, fetchSongsArguments], () => fetchSongs(fetchSongsArguments), {
+    cacheTime: 0,
+  });
 
   const songs = data ?? [];
 
   const handleLogout = async () => {
     await onLogout();
+  };
+
+  const submitSearchForm = (values: SearchSongsFormValues) => {
+    setFetchSongsArguments({
+      jwtHeader,
+      author: values.author === '' ? undefined : values.author,
+      albumTitle: values.albumTitle === '' ? undefined : values.albumTitle,
+    });
   };
 
   return (
@@ -33,8 +49,14 @@ const AdminDashboard: React.FC<Props> = ({ className }) => {
           Logout
         </button>
       </div>
-      <SearchForm isDisabled={isSongsLoading} />
-      {isSongsLoading ? <Loader /> : isError ? <Error /> : <SongsList songs={songs} />}
+      <SongsSearchForm isDisabled={isSongsLoading} submitSearchForm={submitSearchForm} />
+      {isSongsLoading || isSongsRefetching ? (
+        <Loader />
+      ) : isError ? (
+        <Error />
+      ) : (
+        <SongsList songs={songs} />
+      )}
     </div>
   );
 };

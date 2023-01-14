@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Credentials, JwtHeader, Song, SongDetails } from '../../interfaces';
-import { CleanLyricsArguments } from '../useMutationInterfaces';
+import { CleanLyricsArguments, FetchSongsArguments } from '../useQueryInterfaces';
 
 const adminUrlPrefix = '/api/admin';
 
@@ -11,9 +11,10 @@ export async function logIn(credentials: Credentials) {
   return data;
 }
 
-export async function fetchSongs(jwtHeader: JwtHeader | undefined) {
+export async function fetchSongs({ jwtHeader, author, albumTitle }: FetchSongsArguments) {
   const { data } = await axios.get<Song[]>(adminUrlPrefix + '/songs', {
     headers: { ...jwtHeader },
+    params: { author, albumTitle },
   });
   return data;
 }

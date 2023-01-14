@@ -19,3 +19,8 @@ export interface Credentials {
   username: string;
   password: string;
 }
+
+export interface SearchSongsFormValues {
+  author: string | undefined;
+  albumTitle: string | undefined;
+}
