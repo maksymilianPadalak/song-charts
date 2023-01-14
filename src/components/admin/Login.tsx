@@ -3,7 +3,7 @@ import { useAuth } from '../../hooks/useAuth';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import { useMutation } from 'react-query';
-import { logIn } from '../../api/admin/adminApiFunctions';
+import { logIn } from '../../api/admin/apiFunctions';
 import Loader from '../shared/Loader';
 import { useForm } from 'react-hook-form';
 

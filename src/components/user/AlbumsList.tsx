@@ -22,8 +22,11 @@ const AlbumsList: React.FC<Props> = ({ albums, className }) => {
 
   return (
     <div className={className}>
-      {currentAlbums.map((song) => (
-        <h1>Album</h1>
+      {currentAlbums.map((album) => (
+        <div className={'m-4'}>
+          <h5>{album}</h5>
+          <hr />
+        </div>
       ))}
       <div className={'mx-5'}>
         <Pagination

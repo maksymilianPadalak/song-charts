@@ -2,8 +2,8 @@ import React from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import { useMutation, useQuery } from 'react-query';
-import { queryKeys } from '../../api/queryKeys';
-import { cleanLyrics, fetchSong } from '../../api/admin/adminApiFunctions';
+import { reactQueryKeys } from '../../api/admin/reactQueryKeys';
+import { cleanLyrics, fetchSong } from '../../api/admin/apiFunctions';
 import { useAuth } from '../../hooks/useAuth';
 import Loader from '../shared/Loader';
 import { useForm } from 'react-hook-form';
@@ -26,7 +26,7 @@ const SongDetails: React.FC = () => {
 
   const textAreaValue = watch('cleanedLyrics');
 
-  const { data, isLoading } = useQuery(queryKeys.song, () => fetchSong(jwtHeader, id), {
+  const { data, isLoading } = useQuery(reactQueryKeys.song, () => fetchSong(jwtHeader, id), {
     cacheTime: 0,
   });
 

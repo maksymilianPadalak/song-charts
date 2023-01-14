@@ -1,4 +1,4 @@
-import { JwtHeader } from '../interfaces';
+import { JwtHeader } from '../../interfaces';
 
 export interface CleanLyricsArguments {
   jwtHeader: JwtHeader | undefined;

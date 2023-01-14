@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Credentials, JwtHeader, Song, SongDetails } from '../../interfaces';
-import { CleanLyricsArguments, FetchSongsArguments } from '../useQueryInterfaces';
+import { CleanLyricsArguments, FetchSongsArguments } from '../user/reactQueryInterfaces';
 
 const adminUrlPrefix = '/api/admin';
 

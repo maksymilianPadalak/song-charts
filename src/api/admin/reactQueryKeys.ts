@@ -1,4 +1,4 @@
-export enum queryKeys {
+export enum reactQueryKeys {
   login = 'login',
   songs = 'songs',
   song = 'song',
