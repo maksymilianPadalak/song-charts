@@ -25,7 +25,11 @@ const Login: React.FC<Props> = ({ className }) => {
     },
   });
 
-  const { register, handleSubmit } = useForm<FormValues>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>();
 
   const onSubmit = ({ username, password }: FormValues) => {
     mutate({ username, password });
@@ -40,16 +44,16 @@ const Login: React.FC<Props> = ({ className }) => {
           type='text'
           placeholder='Login'
           className={'mb-2'}
-          isInvalid={isError}
-          {...register('username')}
+          isInvalid={isError || errors.username?.type === 'required'}
+          {...register('username', { required: true })}
         />
         <Form.Control
           size='lg'
           type='password'
           placeholder='Password'
-          isInvalid={isError}
+          isInvalid={isError || errors.password?.type === 'required'}
           className={'mb-4'}
-          {...register('password')}
+          {...register('password', { required: true })}
         />
         {isError && <h5 className={'text-danger mb-2'}>Wrong username or password</h5>}
         {isLoading ? (
