@@ -5,38 +5,61 @@ import { Link } from 'react-router-dom';
 import { useMutation } from 'react-query';
 import { logIn } from '../../api/admin/adminApiFunctions';
 import Loader from '../../shared/components/Loader';
+import { useForm } from 'react-hook-form';
 
 interface Props {
   className?: string;
 }
 
+interface FormValues {
+  username: string;
+  password: string;
+}
+
 const Login: React.FC<Props> = ({ className }) => {
   const { onLogIn } = useAuth();
+
   const { mutate, isLoading } = useMutation(logIn, {
     onSuccess: (data) => {
       onLogIn(data.token);
     },
   });
 
-  const handleLogin = () => mutate({ username: 'test', password: 'test' });
+  const { register, handleSubmit } = useForm<FormValues>();
+
+  const onSubmit = ({ username, password }: FormValues) => {
+    mutate({ username, password });
+  };
 
   return (
     <div className={`${className} d-flex justify-content-center align-items-center`}>
-      <div className={'d-flex flex-column align-items-center'}>
+      <form className={'d-flex flex-column align-items-center'} onSubmit={handleSubmit(onSubmit)}>
         <h1 className={'mb-3'}>Welcome Mr Admin</h1>
-        <Form.Control size='lg' type='text' placeholder='Login' className={'mb-2'} />
-        <Form.Control size='lg' type='text' placeholder='Password' className={'mb-4'} />
+        <Form.Control
+          size='lg'
+          type='text'
+          placeholder='Login'
+          className={'mb-2'}
+          {...register('username')}
+        />
+        <Form.Control
+          size='lg'
+          type='text'
+          placeholder='Password'
+          className={'mb-4'}
+          {...register('password')}
+        />
         {isLoading ? (
           <Loader />
         ) : (
-          <button className={'btn btn-primary'} onClick={handleLogin}>
+          <button className={'btn btn-primary'} type={'submit'}>
             Login
           </button>
         )}
         <Link to={'/'} className={'btn btn-warning mt-4'}>
           Go back to dashboard
         </Link>
-      </div>
+      </form>
     </div>
   );
 };
