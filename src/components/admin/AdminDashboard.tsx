@@ -19,6 +19,7 @@ const AdminDashboard: React.FC<Props> = ({ className }) => {
   const [fetchSongsArguments, setFetchSongsArguments] = useState<FetchSongsArguments>({
     jwtHeader,
   });
+
   const {
     data,
     isLoading: isSongsLoading,
