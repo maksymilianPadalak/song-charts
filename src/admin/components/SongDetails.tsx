@@ -17,11 +17,9 @@ const SongDetails: React.FC = () => {
   const navigate = useNavigate();
   const { jwtHeader } = useAuth();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormValues>();
+  const { register, handleSubmit, watch, formState } = useForm<FormValues>();
+
+  const textAreaValue = watch('cleanedLyrics');
 
   const { data, isLoading } = useQuery(queryKeys.song, () => fetchSong(jwtHeader, id), {
     cacheTime: 0,
@@ -69,6 +67,7 @@ const SongDetails: React.FC = () => {
               <Form.Control
                 as='textarea'
                 className={'text-area'}
+                value={textAreaValue}
                 {...register('cleanedLyrics', { required: true })}
               >
                 {data?.cleanedLyrics}
@@ -77,7 +76,10 @@ const SongDetails: React.FC = () => {
             {isErrorSubmitting && <h3 className={'text-danger mb-4'}>Unable to clean lyrics</h3>}
             {isSuccessSubmitting && <h3 className={'text-success mb-4'}>Lyrics updated</h3>}
 
-            <button className={'btn btn-dark col-11 col-sm-6 align-self-center'}>
+            <button
+              className={'btn btn-dark col-11 col-sm-6 align-self-center'}
+              disabled={data?.cleanedLyrics === textAreaValue || !formState.isDirty}
+            >
               Submit changes
             </button>
           </form>
