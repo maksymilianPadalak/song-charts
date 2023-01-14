@@ -21,7 +21,7 @@ const SongsListItem: React.FC<Props> = ({ className, song }) => {
   ];
 
   return (
-    <div className={`${className} song-list-item`} onClick={handleNavigateToSong}>
+    <div className={`${className} list-item`} onClick={handleNavigateToSong}>
       <div className={'d-flex flex-column flex-lg-row justify-content-around'}>
         {songInfoCells.map((cell) => (
           <div
