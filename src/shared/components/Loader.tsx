@@ -1,9 +1,13 @@
 import React from 'react';
 
-const Loader: React.FC = () => {
+interface Props {
+  size?: 'sm' | 'md' | 'lg';
+}
+
+const Loader: React.FC<Props> = ({ size = 'md' }) => {
   return (
     <div className='loader-container'>
-      <div className='spinner' />
+      <div className={`spinner-${size}`} />
     </div>
   );
 };

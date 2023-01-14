@@ -5,14 +5,34 @@
 }
 
 .spinner {
-  width: 64px;
-  height: 64px;
-  border: 8px solid;
   display: flex;
   align-items: center;
   justify-content: center;
   animation: loader-animation 0.8s alternate infinite;
 }
+
+.spinner-sm {
+  @extend .spinner;
+  width: 16px;
+  height: 16px;
+  border: 2px solid;
+}
+
+.spinner-md {
+  @extend .spinner;
+  width: 32px;
+  height: 32px;
+  border: 4px solid;
+}
+
+.spinner-lg {
+  @extend .spinner;
+  width: 64px;
+  height: 64px;
+  border: 8px solid;
+}
+
+
 
 @keyframes loader-animation {
   0% {

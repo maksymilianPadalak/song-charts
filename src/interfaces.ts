@@ -8,3 +8,8 @@ export interface Song {
   id: string;
   songTitle: string;
 }
+
+export interface Credentials {
+  username: string;
+  password: string;
+}

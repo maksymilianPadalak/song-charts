@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { JwtHeader, Song } from '../../interfaces';
+import { Credentials, JwtHeader, Song } from '../../interfaces';
 
 const adminUrlPrefix = '/api/admin';
 
-export async function logIn() {
+export async function logIn(credentials: Credentials) {
   const { data } = await axios.get<{ token: string }>(adminUrlPrefix + '/login', {
-    auth: { username: 'test', password: 'test' },
+    auth: { username: credentials.username, password: credentials.password },
   });
   return data;
 }

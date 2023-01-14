@@ -1,8 +1,5 @@
 import React, { ReactNode } from 'react';
 import { JwtHeader } from '../interfaces';
-import { useQuery } from 'react-query';
-import { queryKeys } from '../api/queryKeys';
-import { logIn } from '../api/admin/adminApiFunctions';
 
 interface Props {
   children?: ReactNode;
@@ -11,27 +8,22 @@ interface Props {
 interface AuthContextValue {
   isLoggedIn: boolean;
   jwtHeader: JwtHeader | undefined;
-  onLogin: () => Promise<void>;
+  onLogIn: (token: string) => void;
   onLogout: () => Promise<void>;
 }
 
 export const AuthContext = React.createContext<AuthContextValue>({
   isLoggedIn: false,
   jwtHeader: undefined,
-  onLogin: async () => {},
+  onLogIn: () => {},
   onLogout: async () => {},
 });
 
 const AuthProvider: React.FC<Props> = ({ children }) => {
-  const { data } = useQuery(queryKeys.login, logIn);
   const [isLoggedIn, setIsLoggedIn] = React.useState<boolean>(false);
   const [jwtHeader, setJwtHeader] = React.useState<JwtHeader | undefined>(undefined);
 
-  const token = data?.token;
-
-  //TODO pass username and password from form
-
-  const handleLogin = async () => {
+  const handleLogin = async (token: string) => {
     if (token) {
       setIsLoggedIn(true);
       setJwtHeader({ jwt: token });
@@ -46,7 +38,7 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
   const value = {
     isLoggedIn,
     jwtHeader,
-    onLogin: handleLogin,
+    onLogIn: handleLogin,
     onLogout: handleLogout,
   };
 
