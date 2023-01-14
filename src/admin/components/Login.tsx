@@ -19,7 +19,7 @@ interface FormValues {
 const Login: React.FC<Props> = ({ className }) => {
   const { onLogIn } = useAuth();
 
-  const { mutate, isLoading } = useMutation(logIn, {
+  const { mutate, isLoading, isError } = useMutation(logIn, {
     onSuccess: (data) => {
       onLogIn(data.token);
     },
@@ -40,15 +40,18 @@ const Login: React.FC<Props> = ({ className }) => {
           type='text'
           placeholder='Login'
           className={'mb-2'}
+          isInvalid={isError}
           {...register('username')}
         />
         <Form.Control
           size='lg'
-          type='text'
+          type='password'
           placeholder='Password'
+          isInvalid={isError}
           className={'mb-4'}
           {...register('password')}
         />
+        {isError && <h5 className={'text-danger mb-2'}>Wrong username or password</h5>}
         {isLoading ? (
           <Loader />
         ) : (
