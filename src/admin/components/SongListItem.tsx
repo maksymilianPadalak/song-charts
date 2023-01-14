@@ -11,7 +11,7 @@ const SongsListItem: React.FC<Props> = ({ className, song }) => {
   const navigate = useNavigate();
 
   const handleNavigateToSong = () => {
-    navigate('song');
+    navigate(`song/${song.id}`);
   };
 
   const songInfoCells: { label: string; value: string }[] = [

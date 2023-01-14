@@ -18,7 +18,7 @@ const AppRoutes: React.FC = () => {
             <>
               <Route path={'dashboard'}>
                 <Route path={''} element={<AdminDashboard />} />
-                <Route path={'song'} element={<SongDetails />} />
+                <Route path={'song/:id'} element={<SongDetails />} />
               </Route>
               <Route path='' element={<Navigate to={'dashboard'} />} />
               <Route path='*' element={<Navigate to={'dashboard'} />} />
