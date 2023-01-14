@@ -17,7 +17,12 @@ const SongDetails: React.FC = () => {
   const navigate = useNavigate();
   const { jwtHeader } = useAuth();
 
-  const { register, handleSubmit, watch, formState } = useForm<FormValues>();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { isDirty },
+  } = useForm<FormValues>();
 
   const textAreaValue = watch('cleanedLyrics');
 
@@ -39,6 +44,9 @@ const SongDetails: React.FC = () => {
   const onSubmit = ({ cleanedLyrics }: FormValues) => {
     mutate({ cleanedLyrics, jwtHeader, id });
   };
+
+  const isButtonDisabled =
+    data?.cleanedLyrics === textAreaValue || !isDirty || textAreaValue === '';
 
   if (isLoading) return <Loader size={'lg'} fullScreen />;
 
@@ -63,12 +71,12 @@ const SongDetails: React.FC = () => {
       ) : (
         <>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className={'m-2 mt-md-4 mb-md-4'}>
+            <div className={'m-2 mx-md-5 mt-md-4 mb-md-4'}>
               <Form.Control
                 as='textarea'
                 className={'text-area'}
                 value={textAreaValue}
-                {...register('cleanedLyrics', { required: true })}
+                {...register('cleanedLyrics')}
               >
                 {data?.cleanedLyrics}
               </Form.Control>
@@ -78,7 +86,7 @@ const SongDetails: React.FC = () => {
 
             <button
               className={'btn btn-dark col-11 col-sm-6 align-self-center'}
-              disabled={data?.cleanedLyrics === textAreaValue || !formState.isDirty}
+              disabled={isButtonDisabled}
             >
               Submit changes
             </button>
