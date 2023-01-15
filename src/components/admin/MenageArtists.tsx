@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ActiveArtists from './ActiveArtists';
 import RemovedArtists from './RemovedArtists';
+import { Link } from 'react-router-dom';
 
 enum artistsPage {
   active = 'active',
@@ -31,6 +32,9 @@ const MenageArtists: React.FC = () => {
       </div>
       {activePage === artistsPage.active && <ActiveArtists />}
       {activePage === artistsPage.removed && <RemovedArtists />}
+      <Link to={'/admin'} className={'btn btn-warning mt-4'}>
+        Go back to dashboard
+      </Link>
     </div>
   );
 };
