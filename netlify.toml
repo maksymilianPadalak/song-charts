@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/api/*"
+  to = "https://lyrics-373516.ew.r.appspot.com/:splat"
+  status = 200
