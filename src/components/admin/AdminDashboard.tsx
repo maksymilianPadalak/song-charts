@@ -9,6 +9,7 @@ import Loader from '../shared/Loader';
 import Error from '../shared/Error';
 import { SearchSongsFormValues } from '../../interfaces';
 import { FetchSongsArguments } from '../../api/user/reactQueryInterfaces';
+import { Link } from 'react-router-dom';
 
 interface Props {
   className?: string;
@@ -45,6 +46,9 @@ const AdminDashboard: React.FC<Props> = ({ className }) => {
   return (
     <div className={className}>
       <div className={'d-flex justify-content-end'}>
+        <Link className={'btn btn-warning m-2'} to={'/admin/artists'}>
+          Menage artists
+        </Link>
         <button className={'btn btn-danger m-2'} onClick={handleLogout}>
           Logout
         </button>

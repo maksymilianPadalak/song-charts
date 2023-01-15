@@ -17,3 +17,8 @@ export async function fetchAlbumStats({ albumTitle }: FetchAlbumStatsArguments) 
   });
   return data;
 }
+
+export async function fetchArtists() {
+  const { data } = await axios.get<string[]>(userUrlPrefix + '/artists');
+  return data;
+}

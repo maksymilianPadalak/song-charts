@@ -6,6 +6,7 @@ import React from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import SongDetails from '../admin/SongDetails';
 import AlbumStats from '../user/AlbumStats';
+import MenageArtists from '../admin/MenageArtists';
 
 const AppRoutes: React.FC = () => {
   const { isLoggedIn } = useAuth();
@@ -22,6 +23,7 @@ const AppRoutes: React.FC = () => {
                 <Route path={''} element={<AdminDashboard />} />
               </Route>
               <Route path={'song/:id'} element={<SongDetails />} />
+              <Route path={'artists'} element={<MenageArtists />} />
               <Route path='' element={<Navigate to={'dashboard'} />} />
               <Route path='*' element={<Navigate to={'dashboard'} />} />
             </>
