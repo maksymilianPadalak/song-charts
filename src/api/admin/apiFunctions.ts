@@ -50,14 +50,14 @@ export async function fetchRemovedArtists(jwtHeader: JwtHeader | undefined) {
 }
 
 export async function deleteArtist({ jwtHeader, artist }: DeleteArtistArguments) {
-  const { data } = await axios.delete<SongDetails>(adminUrlPrefix + `/artists/${artist}`, {
+  const { data } = await axios.delete<void>(adminUrlPrefix + `/artists/${artist}`, {
     headers: { ...jwtHeader },
   });
   return data;
 }
 
 export async function reviveArtist({ jwtHeader, artist }: ReviveArtistArguments) {
-  const { data } = await axios.put<SongDetails>(
+  const { data } = await axios.put<void>(
     adminUrlPrefix + `/removed/artists/${artist}`,
     {},
     { headers: { ...jwtHeader } },
