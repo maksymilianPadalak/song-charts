@@ -4,7 +4,7 @@ import ArtistsSearchForm from './AlbumsSearchInput';
 import LogInAsAdmin from './LoginAsAdmin';
 import { useQuery } from 'react-query';
 import { reactQueryKeys } from '../../api/user/reactQueryKeys';
-import { fetchAlbums } from '../../api/user/apiFunctions';
+import { fetchAlbums, test1, test2 } from '../../api/user/apiFunctions';
 import { FetchAlbumsArguments } from '../../api/admin/reactQueryInterfaces';
 import Loader from '../shared/Loader';
 import AlbumsList from './AlbumsList';
@@ -25,6 +25,10 @@ const LandingPage: React.FC<Props> = ({ className }) => {
       cacheTime: 0,
     },
   );
+
+  //TODO delete after test
+  const { data: test } = useQuery('test', test1);
+  const { data: test_ } = useQuery('test2', test2);
 
   const submitSearchForm = (values: SearchAlbumsFormValues) => {
     setFetchAlbumsArguments({ author: values.author === '' ? undefined : values.author });
