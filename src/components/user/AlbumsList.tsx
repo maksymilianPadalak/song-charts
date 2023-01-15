@@ -23,7 +23,7 @@ const AlbumsList: React.FC<Props> = ({ albums, className }) => {
   };
 
   const handleNavigateToAlbumStats = (album: string) => {
-    navigate(`album/${album}`);
+    navigate(`album/${encodeURIComponent(album)}`);
   };
 
   return (
