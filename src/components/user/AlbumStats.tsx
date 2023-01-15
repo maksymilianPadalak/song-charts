@@ -5,6 +5,7 @@ import { reactQueryKeys } from '../../api/user/reactQueryKeys';
 import { fetchAlbumStats } from '../../api/user/apiFunctions';
 import Loader from '../shared/Loader';
 import MainChart from '../charts/MainChart';
+import DownloadFullReport from '../shared/DownloadFullReport';
 
 interface Props {
   className?: string;
@@ -82,6 +83,11 @@ const AlbumStats: React.FC<Props> = ({ className }) => {
           {stats?.includedSongs.join(', ')}
         </div>
       </div>
+      {data && (
+        <div className={'mt-4 d-flex justify-content-center'}>
+          <DownloadFullReport object={data} fileName={title} />
+        </div>
+      )}
       {goBackToAlbumsButton}
     </div>
   );
