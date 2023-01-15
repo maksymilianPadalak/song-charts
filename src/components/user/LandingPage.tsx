@@ -1,4 +1,3 @@
-import RappersCarousel from './RappersCarousel';
 import React, { useState } from 'react';
 import ArtistsSearchForm from './AlbumsSearchInput';
 import LogInAsAdmin from './LoginAsAdmin';
@@ -35,7 +34,10 @@ const LandingPage: React.FC<Props> = ({ className }) => {
   return (
     <div className={`${className} d-flex flex-column justify-content-between`}>
       <div>
-        <RappersCarousel className={'mb-2'} />
+        <div className='burgundy p-5 d-flex  flex-column align-items-center text-center'>
+          <h1>Welcome to song analysis</h1>
+          <h5 className={'mt-3'}>Filter songs by artists and display stats!</h5>
+        </div>
         <LogInAsAdmin />
         <ArtistsSearchForm className={'px-5'} submitSearchForm={submitSearchForm} />
         <div className={'mt-5'}>
