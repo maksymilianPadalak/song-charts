@@ -63,6 +63,8 @@ const AlbumStats: React.FC<Props> = ({ className }) => {
           >
             <h3 className={'mt-2'}>Artist: {artistName}</h3>
             <MainChart mostPopularWords={stat[artistName]} />
+            <h5 className={'mb-2'}>Included songs</h5>
+            <div>{stats?.includedSongs.join(', ')}</div>
           </div>
         );
       })}
