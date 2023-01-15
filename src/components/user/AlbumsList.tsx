@@ -26,6 +26,13 @@ const AlbumsList: React.FC<Props> = ({ albums, className }) => {
     navigate(`album/${encodeURIComponent(album)}`);
   };
 
+  if (albums.length === 0)
+    return (
+      <div className={'d-flex justify-content-center'}>
+        <h3>Albums not found :(</h3>
+      </div>
+    );
+
   return (
     <div className={className}>
       {currentAlbums.map((album) => (

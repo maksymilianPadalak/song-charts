@@ -30,7 +30,7 @@ const LandingPage: React.FC<Props> = ({ className }) => {
     setFetchAlbumsArguments({ author: values.author === '' ? undefined : values.author });
   };
 
-  const albums = data ?? [];
+  const albums = data === undefined || typeof data !== typeof [] ? [] : data;
 
   return (
     <div className={`${className} d-flex flex-column justify-content-between`}>
