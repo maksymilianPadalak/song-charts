@@ -17,15 +17,3 @@ export async function fetchAlbumStats({ albumTitle }: FetchAlbumStatsArguments) 
   });
   return data;
 }
-
-//TODO delete after test
-export async function test1() {
-  const { data } = await axios.get('https://jsonplaceholder.typicode.com/todos/1');
-  return data;
-}
-
-//TODO delete after test
-export async function test2() {
-  const { data } = await axios.get('https://lyrics-373516.ew.r.appspot.com/api/artists');
-  return data;
-}
