@@ -26,7 +26,7 @@ const SongDetails: React.FC = () => {
 
   const textAreaValue = watch('cleanedLyrics');
 
-  const { data, isLoading } = useQuery(reactQueryKeys.song, () => fetchSong(jwtHeader, id), {
+  const { data, isLoading } = useQuery(reactQueryKeys.songDetails, () => fetchSong(jwtHeader, id), {
     cacheTime: 0,
   });
 
