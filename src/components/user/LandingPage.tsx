@@ -35,8 +35,8 @@ const LandingPage: React.FC<Props> = ({ className }) => {
     <div className={`${className} d-flex flex-column justify-content-between`}>
       <div>
         <div className='burgundy p-5 d-flex  flex-column align-items-center text-center'>
-          <h1>Welcome to song analysis</h1>
-          <h5 className={'mt-3'}>Filter songs by artists and display stats!</h5>
+          <h1>Welcome to albums analysis</h1>
+          <h5 className={'mt-3'}>Filter albums by artists and display stats!</h5>
         </div>
         <LogInAsAdmin />
         <ArtistsSearchForm className={'px-5'} submitSearchForm={submitSearchForm} />
