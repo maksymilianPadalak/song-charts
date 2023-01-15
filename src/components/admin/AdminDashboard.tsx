@@ -28,7 +28,7 @@ const AdminDashboard: React.FC<Props> = ({ className }) => {
     cacheTime: 0,
   });
 
-  const songs = data ?? [];
+  const songs = data?.length === 0 || typeof data !== typeof [] ? [] : data ?? [];
 
   const handleLogout = async () => {
     await onLogout();

@@ -22,6 +22,13 @@ const SongsList: React.FC<Props> = ({ songs, className }) => {
     );
   };
 
+  if (songs.length === 0)
+    return (
+      <div className={'d-flex justify-content-center'}>
+        <h3>Songs not found :(</h3>
+      </div>
+    );
+
   return (
     <div className={className}>
       {currentSongs.map((song) => (
