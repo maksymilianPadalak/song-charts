@@ -2,6 +2,7 @@ export enum reactQueryKeys {
   login = 'login',
   songs = 'songs',
   song = 'song',
-  artists = 'artists',
+  activeArtists = 'activeArtists',
+  removedArtists = 'removedArtists',
   songDetails = 'songDetails',
 }

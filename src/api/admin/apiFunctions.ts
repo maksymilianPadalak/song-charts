@@ -1,6 +1,11 @@
 import axios from 'axios';
 import { Credentials, JwtHeader, Song, SongDetails } from '../../interfaces';
-import { CleanLyricsArguments, FetchSongsArguments } from '../user/reactQueryInterfaces';
+import {
+  CleanLyricsArguments,
+  DeleteArtistArguments,
+  FetchSongsArguments,
+  ReviveArtistArguments,
+} from '../user/reactQueryInterfaces';
 
 const adminUrlPrefix = '/api/admin';
 
@@ -33,6 +38,29 @@ export async function cleanLyrics({ jwtHeader, cleanedLyrics, id }: CleanLyricsA
     {
       headers: { ...jwtHeader },
     },
+  );
+  return data;
+}
+
+export async function fetchRemovedArtists(jwtHeader: JwtHeader | undefined) {
+  const { data } = await axios.get<string[]>(adminUrlPrefix + '/removed/artists', {
+    headers: { ...jwtHeader },
+  });
+  return data;
+}
+
+export async function deleteArtist({ jwtHeader, artist }: DeleteArtistArguments) {
+  const { data } = await axios.delete<SongDetails>(adminUrlPrefix + `/artists/${artist}`, {
+    headers: { ...jwtHeader },
+  });
+  return data;
+}
+
+export async function reviveArtist({ jwtHeader, artist }: ReviveArtistArguments) {
+  const { data } = await axios.put<SongDetails>(
+    adminUrlPrefix + `/removed/artists/${artist}`,
+    {},
+    { headers: { ...jwtHeader } },
   );
   return data;
 }

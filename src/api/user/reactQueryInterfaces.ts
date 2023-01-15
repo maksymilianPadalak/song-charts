@@ -11,3 +11,13 @@ export interface FetchSongsArguments {
   author?: string;
   albumTitle?: string;
 }
+
+export interface DeleteArtistArguments {
+  jwtHeader: JwtHeader | undefined;
+  artist: string;
+}
+
+export interface ReviveArtistArguments {
+  jwtHeader: JwtHeader | undefined;
+  artist: string;
+}
